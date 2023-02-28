@@ -1,0 +1,46 @@
+<div class="login-wrapper">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>Register</mat-card-title>
+        </mat-card-header>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <!-- Name -->
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Name" formControlName="user_name" />
+            </mat-form-field>
+            <!-- Email -->
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email" formControlName="user_email" />
+            </mat-form-field>
+            <!-- Email -->
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Phone" formControlName="user_contact_no" />
+            </mat-form-field>
+            <!-- Gender -->
+            <div class="misc-bottom-padding">
+                <mat-label>Gender:</mat-label>
+                <mat-radio-group aria-label="Select an option" formControlName="user_gender">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <!-- Password -->
+            <mat-form-field class="example-full-width">
+                <input type="password" matInput placeholder="Password" formControlName="user_password" />
+            </mat-form-field>
+
+            <!-- Confirm password -->
+            <mat-form-field class="example-full-width">
+                <input type="password" matInput placeholder="Confirm password"
+                    formControlName="user_confirm_password" />
+            </mat-form-field>
+            <span *ngIf="pswMismatch" class="psw_warn">Confirm password did not match</span>
+            <!-- Submit -->
+            <div class="button-wrapper form-button-wrapper">
+                <button type="submit" mat-flat-button color="primary">Submit</button>
+                <button mat-stroked-button color="primary" (click)="goToLogin()">Back to login</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

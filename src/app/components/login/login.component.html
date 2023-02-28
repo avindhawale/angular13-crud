@@ -1,0 +1,22 @@
+<div class="login-wrapper">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>Log in</mat-card-title>
+            <mat-card-subtitle class="login-mat-card-subtitle" *ngIf="errorMessage">{{errorMessage}}</mat-card-subtitle>
+        </mat-card-header>
+        <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email" formControlName="user_email" />
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input type="password" matInput placeholder="Password" formControlName="user_pwd" />
+                </mat-form-field>
+            </mat-card-content>
+            <div class="login-button-wrapper">
+                <button type="Submit" mat-stroked-button color="accent" class="btn-block">Log in</button>
+                <button mat-stroked-button color="primary" class="btn-block" (click)="onRegister()">Register</button>
+            </div>
+        </form>
+    </mat-card>
+</div>
