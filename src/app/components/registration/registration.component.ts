@@ -1,12 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -23,7 +17,8 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -68,8 +63,9 @@ export class RegistrationComponent implements OnInit {
     }
 
     this.userService.registerUser(this.form.value).subscribe({
-      next: (res) => {
-        console.log(res);
+      next: (res: any) => {
+        alert(res.message);
+        if (res.status) this.router.navigate(['login']);
       },
       error: (err) => {
         alert(err);

@@ -38,9 +38,16 @@ export class UserService {
       .pipe(catchError(this.errorHandler));
   }
 
-  registerUser(data: User): Observable<User> {
+  registerUser(data: any): Observable<User> {
+    let fd = new FormData();
+    fd.append('user_name', data.user_name);
+    fd.append('user_email', data.user_email);
+    fd.append('user_gender', data.user_gender);
+    fd.append('user_contact_no', data.user_contact_no);
+    fd.append('user_password', data.user_password);
+
     return this.http
-      .post<User>(API.REGISTER, data)
+      .post<User>(API.REGISTER, fd)
       .pipe(catchError(this.errorHandler));
   }
 
